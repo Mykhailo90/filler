@@ -35,11 +35,16 @@ typedef struct	s_game
 	char		**map;
 	char		**filler;	//filler			**tetri
 	int			timeVar;	//my_variable******
-	char		*help;		//my_variable******
+	char		**help;		//my_variable******
 }				t_game;
 
 void			start_game(t_game *param, char *start_row);
 void			init_game_param(t_game *param);
 void			search_geimer(char *start_row, t_game *param);
+void			search_map(char *start_row, t_game *param);
+void			find_place(char *start_row, t_game *param);
+void			search_filler(char *start_row, t_game *param);
+void			find_place_filler(char *start_row, t_game *param);
+void	        clear_memory(char **help);
 
 #endif

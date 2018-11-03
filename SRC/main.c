@@ -12,8 +12,12 @@
 
 #include "filler.h"
 
-int					main(int argc, char **argv)
+int					main(void)
 {
-	ft_printf("Hello my love C\n");
+	t_game	param;
+	char	*start_row;
+
+	start_row = NULL;
+	start_game(&param, start_row);
 	return (0);
 }

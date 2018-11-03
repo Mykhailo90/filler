@@ -17,7 +17,8 @@ FLAFS = "-Wall -Wexta -Werror"
 FT_PRINTF = libft/libftprintf.a
 
 SRC =  ./SRC/main.c ./SRC/start_game.c ./SRC/init_game_param.c \
-		./SRC/search_geimer.c
+		./SRC/search_geimer.c ./SRC/find_place.c ./SRC/search_filler.c \
+		./SRC/search_map.c
 
 OBJ = $(SRC:.c=.o)
 
