@@ -1,32 +1,30 @@
 
 #include "../includes/filler.h"
-// #include "../libft/includes/libft.h"
 
 #include <stdio.h>
 
 int		main(void)
 {
-	t_fl *inf;
+	t_game *param;
 
-	inf = (t_fl *)ft_memalloc(sizeof(t_fl));
-	zero_out(inf);
-	pars_line(inf);
-	matrix(inf);
-	territory(inf);
-	ft_output(inf);
-	ft_refreshers(inf);
-	while (inf)
+	param = (t_game *)ft_memalloc(sizeof(t_game));
+	init_param(param);
+	row_parser(param);
+	matrix(param);
+	territory(param);
+	ft_output(param);
+	ft_refreshers(param);
+	while (param)
 	{
-		if (pars_map_xy(inf))
+		if (pars_map_xy(param))
 		{
-			matrix(inf);
-			territory(inf);
-			ft_output(inf);
-			ft_refreshers(inf);
+			matrix(param);
+			territory(param);
+			ft_output(param);
+			ft_refreshers(param);
 		}
 		else
 			return (0);
 	}
-	//	free(inf.len);
 	return (0);
 }

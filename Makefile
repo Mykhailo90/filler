@@ -20,8 +20,8 @@ LIB_DIR		= ./libft
 LIB_INC		= $(LIB_DIR)/includes
 SRC_DIR 	= ./src
 INCL_DIR 	= ./includes
-SRC_NAME	= main.c ft_parsing.c outline.c\
-	  outline_and_stroke.c ft_supportive.c
+SRC_NAME	= main.c parsing_params.c outline.c init_param.c \
+	 			outline_and_stroke.c ft_supportive.c
 OBJ_NAME	= $(SRC_NAME:.c=.o)
 OBJ 		= $(addprefix $(OBJ_DIR)/, $(OBJ_NAME))
 SRC 		= $(addprefix $(SRC_DIR)/, $(SRC_NAME))

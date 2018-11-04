@@ -4,7 +4,7 @@
 # include "../libft/includes/libft.h"
 #include <stdio.h>
 
-typedef struct	s_fl
+typedef struct	s_game
 {
 	int			fd;
 	int			map_y;
@@ -30,23 +30,24 @@ typedef struct	s_fl
 */
 	int			dis_y;
 	int			dis_x;
-}				t_fl;
+}				t_game;
 
 int				main(void);
-void			pars_line(t_fl *inf);
-int				pars_map_xy(t_fl *inf);
-int				save_map(t_fl *inf);
-int				pars_figure_xy(t_fl *inf);
-int				pars_figure(t_fl *inf);
-int				matrix(t_fl *inf);
-int				enemy_figure(t_fl *inf);
-int				distance(t_fl *inf);
-int				dist_forml(t_fl *inf);
-int				territory(t_fl *inf);
-int				valid_check(t_fl *inf, int w_m, int h_m);
-void			determ_course(t_fl *inf, int h, int w);
-int				ft_final_decision(t_fl *inf, int optimal, int h, int w);
-void			ft_output(t_fl *inf);
-void			ft_refreshers(t_fl *inf);
-void			zero_out(t_fl *inf);
+void			row_parser(t_game *param);
+void			coords_parser(t_game *param);
+void			map_parser(t_game *param);
+void			parsing_coords_position(t_game *param);
+void			create_map(t_game *param);
+int				matrix(t_game *param);
+int				enemy_figure(t_game *param);
+int				distance(t_game *param);
+int				dist_forml(t_game *param);
+int				territory(t_game *param);
+int				valid_check(t_game *param, int w_m, int h_m);
+void			determ_course(t_game *param, int h, int w);
+int				ft_final_decision(t_game *param, int optimal,
+									int h, int w);
+void			ft_output(t_game *param);
+void			ft_refreshers(t_game *param);
+void			init_param(t_game *param);
 #endif
