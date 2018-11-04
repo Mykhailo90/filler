@@ -10,37 +10,48 @@
 #                                                                              #
 #******************************************************************************#
 
-NAME = "filler"
+NAME = msarapii.filler
 
-FLAFS = "-Wall -Wexta -Werror"
+CC = gcc
+FLAGS = -Wall -Wextra -Werror
 
-FT_PRINTF = libft/libftprintf.a
-
-SRC =  ./SRC/main.c ./SRC/start_game.c ./SRC/init_game_param.c \
-		./SRC/search_geimer.c ./SRC/find_place.c ./SRC/search_filler.c \
-		./SRC/search_map.c
-
-OBJ = $(SRC:.c=.o)
+OBJ_DIR		= ./objects
+LIB_DIR		= ./libft
+LIB_INC		= $(LIB_DIR)/includes
+SRC_DIR 	= ./src
+INCL_DIR 	= ./includes
+SRC_NAME	= main.c ft_parsing.c outline.c\
+	  outline_and_stroke.c ft_supportive.c
+OBJ_NAME	= $(SRC_NAME:.c=.o)
+OBJ 		= $(addprefix $(OBJ_DIR)/, $(OBJ_NAME))
+SRC 		= $(addprefix $(SRC_DIR)/, $(SRC_NAME))
 
 all: $(NAME)
 
-$(OBJ) : %.o: %.c
-		@gcc $(FLAGS) -I ./SRC/ -I ./libft/ -o $@ -c $<
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@echo "Compilling:$<"
+	@$(CC) $(FLAGS) -I $(LIB_INC) -I $(INCL_DIR) -c $< -o $@
 
-$(NAME): $(OBJ)
-		@make -C libft/
-		@gcc -o $(NAME) $(OBJ) $(FT_PRINTF)
-
-#%.o: %.c
-#	@gcc $(FLAGS) -o $@ -c $<
+$(NAME):
+	@echo "Compilling LIBFT"
+	@make -C libft
+	@mkdir -p $(OBJ_DIR)
+	@$(MAKE) $(OBJ)
+	@echo "Create bot"
+	@$(CC) $(FLAGS) $(OBJ) -o $(NAME) -I $(LIB_INC) -L $(LIB_DIR) -lft
+	@cp $(NAME) players/
 
 clean:
-		@/bin/rm -f $(OBJ)
-		@make -C libft/ clean
+	@echo "Cleaning LIBFT objects"
+	@make -C libft clean
+	@echo "Cleaning objects"
+	@/bin/rm -rf $(OBJ_DIR)
 
 fclean: clean
-		@/bin/rm -f $(NAME)
-		@make -C libft/ fclean
+	@echo "Cleaning LIBFT exe"
+	@make -C libft fclean
+	@echo "Cleaning exe"
+	@/bin/rm -f $(NAME)
+	@/bin/rm -f players/$(NAME)
 
 re: fclean all
-
