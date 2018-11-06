@@ -1,16 +1,16 @@
 
-#include "../includes/filler.h"
+#include "filler.h"
 
-void	ft_refreshers(t_game *param)
+void	ft_refreshers(t_fl *inf)
 {
 	int h;
 
 	h = 0;
-	while (h < param->pic_y)
+	while (h < inf->pic_y)
 	{
-		free(param->figure[h]);
+		free(inf->figure[h]);
 		h++;
 	}
-	free(param->figure);
+	free(inf->figure);
 	h = 0;
 }

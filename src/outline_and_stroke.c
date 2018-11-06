@@ -1,7 +1,7 @@
 
-#include "../includes/filler.h"
+#include "filler.h"
 
-int		territory(t_game *inf)
+int		territory(t_fl *inf)
 {
 	int		y;
 	int		x;
@@ -21,7 +21,7 @@ int		territory(t_game *inf)
 	return (1);
 }
 
-int		valid_check(t_game *inf, int ter_y, int ter_x)
+int		valid_check(t_fl *inf, int ter_y, int ter_x)
 {
 	int y;
 	int x;
@@ -50,7 +50,7 @@ int		valid_check(t_game *inf, int ter_y, int ter_x)
 	return ((val_fig) ? 1 : 0);
 }
 
-void	determ_course(t_game *inf, int h, int w)
+void	determ_course(t_fl *inf, int h, int w)
 {
 	int dc_y;
 	int dc_x;
@@ -74,7 +74,7 @@ void	determ_course(t_game *inf, int h, int w)
 	ft_final_decision(inf, opt_turn, h, w);
 }
 
-int		ft_final_decision(t_game *inf, int optimal, int h, int w)
+int		ft_final_decision(t_fl *inf, int optimal, int h, int w)
 {
 	if (inf->mites > optimal)
 	{
@@ -85,7 +85,7 @@ int		ft_final_decision(t_game *inf, int optimal, int h, int w)
 	return (1);
 }
 
-void	ft_output(t_game *inf)
+void	ft_output(t_fl *inf)
 {
 	ft_putnbr(inf->end_y);
 	write(1, " ", 1);

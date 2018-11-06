@@ -1,7 +1,7 @@
 
-#include "../includes/filler.h"
+#include "filler.h"
 
-int		matrix(t_game *inf)
+int		matrix(t_fl *inf)
 {
 	int heig;
 	int wid;
@@ -30,7 +30,7 @@ int		matrix(t_game *inf)
 	return (1);
 }
 
-int		enemy_figure(t_game *inf)
+int		enemy_figure(t_fl *inf)
 {
 	inf->en_f_y = 0;
 	while (inf->map_y > inf->en_f_y)
@@ -47,7 +47,7 @@ int		enemy_figure(t_game *inf)
 	return (1);
 }
 
-int		distance(t_game *inf)
+int		distance(t_fl *inf)
 {
 	int		distance;
 
@@ -75,7 +75,7 @@ int		distance(t_game *inf)
 	return (1);
 }
 
-int		dist_forml(t_game * inf)
+int		dist_forml(t_fl * inf)
 {
 	int		distance;
 	int		distance2;
