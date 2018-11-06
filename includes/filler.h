@@ -34,10 +34,10 @@ typedef struct	s_game
 
 int				main(void);
 void			row_parser(t_game *param);
-void			coords_parser(t_game *param);
-void			map_parser(t_game *param);
-void			parsing_coords_position(t_game *param);
-void			create_map(t_game *param);
+int				coords_parser(t_game *param);
+int				map_parser(t_game *param);
+int			parsing_coords_position(t_game *param);
+int			create_map(t_game *param);
 int				matrix(t_game *param);
 int				enemy_figure(t_game *param);
 int				distance(t_game *param);

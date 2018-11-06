@@ -16,7 +16,7 @@ int		main(void)
 	ft_refreshers(param);
 	while (param)
 	{
-		if (pars_map_xy(param))
+		if (coords_parser(param))
 		{
 			matrix(param);
 			territory(param);
