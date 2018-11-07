@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/12 14:56:17 by msarapii          #+#    #+#             */
-/*   Updated: 2017/10/11 15:11:14 by msarapii         ###   ########.fr       */
+/*   Created: 2017/11/20 21:25:57 by msarapii          #+#    #+#             */
+/*   Updated: 2017/11/20 22:25:14 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 8
-# include "libft.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <limits.h>
+#include "../includes/libft.h"
 
-typedef struct				s_gnl_node
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	struct s_gnl_node		*next;
-	int						file_descr;
-	char					*inf;
-}							t_gnl_node;
+	t_list	*start;
+	t_list	*next;
 
-int							get_next_line(const int fd, char **line);
-
-#endif
+	start = *alst;
+	while (start)
+	{
+		del(start->content, start->content_size);
+		next = start->next;
+		free(start);
+		start = next;
+	}
+	(*alst) = NULL;
+}

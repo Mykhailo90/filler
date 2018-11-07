@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/12 14:56:17 by msarapii          #+#    #+#             */
-/*   Updated: 2017/10/11 15:11:14 by msarapii         ###   ########.fr       */
+/*   Created: 2017/10/31 19:21:02 by msarapii          #+#    #+#             */
+/*   Updated: 2017/11/05 12:27:36 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 8
-# include "libft.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <limits.h>
+#include "../includes/libft.h"
 
-typedef struct				s_gnl_node
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	struct s_gnl_node		*next;
-	int						file_descr;
-	char					*inf;
-}							t_gnl_node;
+	unsigned char	*src1;
+	unsigned char	*src2;
+	size_t			i;
 
-int							get_next_line(const int fd, char **line);
-
-#endif
+	src1 = (unsigned char *)s1;
+	src2 = (unsigned char *)s2;
+	i = 0;
+	while (n > i)
+	{
+		if (*src1++ == *src2++)
+			i++;
+		else
+			return (*(--src1) - *(--src2));
+	}
+	return (0);
+}

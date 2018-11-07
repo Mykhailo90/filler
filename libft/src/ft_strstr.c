@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/12 14:56:17 by msarapii          #+#    #+#             */
-/*   Updated: 2017/10/11 15:11:14 by msarapii         ###   ########.fr       */
+/*   Created: 2017/11/05 10:26:25 by msarapii          #+#    #+#             */
+/*   Updated: 2017/11/21 00:29:50 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 8
-# include "libft.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <limits.h>
+#include "../includes/libft.h"
 
-typedef struct				s_gnl_node
+char	*ft_strstr(const char *str, const char *substr)
 {
-	struct s_gnl_node		*next;
-	int						file_descr;
-	char					*inf;
-}							t_gnl_node;
+	char	*a;
+	char	*b;
+	size_t	i;
+	size_t	j;
 
-int							get_next_line(const int fd, char **line);
-
-#endif
+	a = (char *)str;
+	b = (char *)substr;
+	i = 0;
+	j = 0;
+	if (b[i] == '\0')
+		return ((char *)str);
+	while (a[i] != '\0')
+	{
+		while (a[i + j] == b[j])
+		{
+			j++;
+			if (b[j] == '\0')
+				return (&a[i]);
+		}
+		j = 0;
+		i++;
+	}
+	return (NULL);
+}

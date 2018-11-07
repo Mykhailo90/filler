@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/12 14:56:17 by msarapii          #+#    #+#             */
-/*   Updated: 2017/10/11 15:11:14 by msarapii         ###   ########.fr       */
+/*   Created: 2017/10/31 16:05:19 by msarapii          #+#    #+#             */
+/*   Updated: 2017/11/21 14:09:59 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 8
-# include "libft.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <limits.h>
+#include "../includes/libft.h"
 
-typedef struct				s_gnl_node
+void		*ft_memmove(void *dst, const void *src, size_t len)
 {
-	struct s_gnl_node		*next;
-	int						file_descr;
-	char					*inf;
-}							t_gnl_node;
+	char	*d;
+	char	*s;
+	short	i;
 
-int							get_next_line(const int fd, char **line);
-
-#endif
+	d = (char*)dst;
+	s = (char*)src;
+	if (s > d)
+		ft_memcpy(d, s, len);
+	else
+	{
+		i = (short)len - 1;
+		while (i >= 0)
+		{
+			d[i] = s[i];
+			i--;
+		}
+	}
+	return (dst);
+}

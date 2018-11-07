@@ -5,53 +5,59 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/10 15:11:36 by msarapii          #+#    #+#             */
-/*   Updated: 2018/11/10 15:11:37 by msarapii         ###   ########.fr       */
+/*   Created: 2018/10/12 14:56:17 by msarapii          #+#    #+#             */
+/*   Updated: 2018/11/11 15:11:14 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLER_H
 # define FILLER_H
-
 # include "../libft/includes/libft.h"
-# include <stdio.h>
+#include <stdio.h>
 
-typedef struct	s_game
+typedef struct	s_fl
 {
-	int			coord_x;          // coord_x			x
-	int			coord_y;			// coord_y			y
-	int			width;			// width			w
-	int			height;			// height			h
-	int			line;		// line				row
-	int			finish;		// finish			done
-	int			stage_x;		// stage_x			save_x
-	int			stage_y;		// stage_y			save_y
-	int			filler_x;	// filler_x			tetri_x
-	int			filler_y;	// filler_y			tetri_y
-	int			friend_x;	// friend_x			enemy_x
-	int			friend_y;	// friend_y			enemy_y
-	char		geimer;		// geimer			player
-	char		friend;		// friend			enemy
+	int			fd;
+	int			map_y;
+	int			map_x;
+	int			pic_y;
+	int			pic_x;
+	int			mites;
+	int			end_y;
+	int			end_x;
+	char		my_bot;
+	char		bot_enemy;
+	char		*line;
+	int			**matrix;
+	char		**figure;
 	char		**map;
-	char		**filler;	//filler			**tetri
-	int			timeVar;	//my_variable******
-	char		**help;		//my_variable******
-}				t_game;
+/*
+** --------------------------iterator in enemy_figure--------------------
+*/
+	int			en_f_y;
+	int			en_f_x;
+/*
+** --------------------------iterator in distance --------------------
+*/
+	int			dis_y;
+	int			dis_x;
+}				t_fl;
 
-void			start_game(t_game *param, char *start_row);
-void			init_game_param(t_game *param);
-void			search_geimer(char *start_row, t_game *param);
-void			search_map(char *start_row, t_game *param);
-void			find_place(char *start_row, t_game *param);
-void			search_filler(char *start_row, t_game *param);
-void			find_place_filler(char *start_row, t_game *param);
-void	        clear_memory(char **help);
-void		ft_place_map(t_game *p);
-void		ft_free_arr(char **arr);
-void	ft_find_place(t_game *p, int *a, int *b);
-void	ft_init_map(t_game *p);
-int		ft_check_place(t_game *p, int x, int y);
-void	ft_init_map(t_game *p);
-
-
+int				main(void);
+void			pars_line(t_fl *inf);
+int				pars_map_xy(t_fl *inf);
+int				save_map(t_fl *inf);
+int				pars_figure_xy(t_fl *inf);
+int				pars_figure(t_fl *inf);
+int				matrix(t_fl *inf);
+int				enemy_figure(t_fl *inf);
+int				distance(t_fl *inf);
+int				dist_forml(t_fl *inf);
+int				territory(t_fl *inf);
+int				valid_check(t_fl *inf, int w_m, int h_m);
+void			determ_course(t_fl *inf, int h, int w);
+int				ft_final_decision(t_fl *inf, int optimal, int h, int w);
+void			ft_output(t_fl *inf);
+void			ft_refreshers(t_fl *inf);
+void			zero_out(t_fl *inf);
 #endif

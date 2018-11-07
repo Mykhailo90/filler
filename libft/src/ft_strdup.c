@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/12 14:56:17 by msarapii          #+#    #+#             */
-/*   Updated: 2017/10/11 15:11:14 by msarapii         ###   ########.fr       */
+/*   Created: 2017/11/02 11:24:18 by msarapii          #+#    #+#             */
+/*   Updated: 2017/11/05 12:41:59 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 8
-# include "libft.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <limits.h>
+#include "../includes/libft.h"
 
-typedef struct				s_gnl_node
+char	*ft_strdup(const char *s1)
 {
-	struct s_gnl_node		*next;
-	int						file_descr;
-	char					*inf;
-}							t_gnl_node;
+	char	*dest;
+	size_t	len;
 
-int							get_next_line(const int fd, char **line);
-
-#endif
+	len = ft_strlen((char *)s1) + 1;
+	if (!(dest = (char *)ft_memalloc(len)))
+		return (NULL);
+	ft_strcpy((char *)dest, (char *)s1);
+	return ((char *)dest);
+}

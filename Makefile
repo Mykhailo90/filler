@@ -21,18 +21,11 @@ LIB_INC		= $(LIB_DIR)/includes
 SRC_DIR 	= ./src
 INCL_DIR 	= ./includes
 SRC_NAME	= \
-				main.c \
-				start_game.c \
-				init_game_param.c \
-				search_geimer.c \
-				find_place.c \
-				search_filler.c \
-				search_map.c \
-				ft_place_map.c \
-				ft_free_arr.c \
-				find_place_filler.c \
-				ft_find_place.c \
-				ft_check_place.c
+				main.c\
+	  			ft_parsing.c\
+	  			outline.c\
+	  			outline_and_stroke.c\
+	  			ft_supportive.c
 
 OBJ_NAME	= $(SRC_NAME:.c=.o)
 OBJ 		= $(addprefix $(OBJ_DIR)/, $(OBJ_NAME))

@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/12 14:56:17 by msarapii          #+#    #+#             */
-/*   Updated: 2017/10/11 15:11:14 by msarapii         ###   ########.fr       */
+/*   Created: 2017/11/15 16:36:53 by msarapii          #+#    #+#             */
+/*   Updated: 2017/11/21 11:35:41 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 8
-# include "libft.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <limits.h>
+#include "../includes/libft.h"
 
-typedef struct				s_gnl_node
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	struct s_gnl_node		*next;
-	int						file_descr;
-	char					*inf;
-}							t_gnl_node;
+	char	*c;
+	char	s2;
+	int		i;
 
-int							get_next_line(const int fd, char **line);
-
-#endif
+	i = 0;
+	if (s && f)
+	{
+		c = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+		if (!c)
+			return (NULL);
+		while (*s)
+		{
+			s2 = f(*s++);
+			if (s2)
+				c[i++] = s2;
+		}
+		c[i++] = '\0';
+		return (c);
+	}
+	return (NULL);
+}

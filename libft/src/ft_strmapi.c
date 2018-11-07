@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/12 14:56:17 by msarapii          #+#    #+#             */
-/*   Updated: 2017/10/11 15:11:14 by msarapii         ###   ########.fr       */
+/*   Created: 2017/11/15 19:24:41 by msarapii          #+#    #+#             */
+/*   Updated: 2017/11/21 11:58:43 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 8
-# include "libft.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <limits.h>
+#include "../includes/libft.h"
 
-typedef struct				s_gnl_node
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	struct s_gnl_node		*next;
-	int						file_descr;
-	char					*inf;
-}							t_gnl_node;
+	char			*c;
+	char			s2;
+	unsigned int	i;
+	unsigned int	j;
 
-int							get_next_line(const int fd, char **line);
-
-#endif
+	i = 0;
+	j = 0;
+	if (s && f)
+	{
+		c = (char*)malloc(ft_strlen(s) + 1);
+		if (!c)
+			return (NULL);
+		while (s[i] != '\0')
+		{
+			s2 = s[i];
+			if (f(i, s2))
+				c[j++] = f(i, s[i]);
+			i++;
+		}
+		c[j] = '\0';
+		return (c);
+	}
+	return (NULL);
+}

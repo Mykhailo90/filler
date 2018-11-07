@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_newlink.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/12 14:56:17 by msarapii          #+#    #+#             */
-/*   Updated: 2017/10/11 15:11:14 by msarapii         ###   ########.fr       */
+/*   Created: 2017/10/31 13:11:14 by msarapii          #+#    #+#             */
+/*   Updated: 2017/11/21 00:11:55 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 8
-# include "libft.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <limits.h>
 
-typedef struct				s_gnl_node
+#include "../includes/libft.h"
+
+t_list	*ft_newlink(t_list *list, void *content)
 {
-	struct s_gnl_node		*next;
-	int						file_descr;
-	char					*inf;
-}							t_gnl_node;
+	t_list	*linkinf;
 
-int							get_next_line(const int fd, char **line);
-
-#endif
+	if (!(linkinf = malloc(sizeof(t_list))))
+		return (NULL);
+	if (linkinf)
+	{
+		linkinf->content = content;
+		linkinf->next = list;
+	}
+	return (linkinf);
+}

@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msarapii <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/12 14:56:17 by msarapii          #+#    #+#             */
-/*   Updated: 2017/10/11 15:11:14 by msarapii         ###   ########.fr       */
+/*   Created: 2017/11/20 23:25:57 by msarapii          #+#    #+#             */
+/*   Updated: 2017/11/21 13:25:53 by msarapii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 8
-# include "libft.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <limits.h>
+#include "../includes/libft.h"
 
-typedef struct				s_gnl_node
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	struct s_gnl_node		*next;
-	int						file_descr;
-	char					*inf;
-}							t_gnl_node;
+	t_list	*new_list;
+	t_list	*start;
 
-int							get_next_line(const int fd, char **line);
-
-#endif
+	if (!lst)
+		return (NULL);
+	new_list = f(lst);
+	start = new_list;
+	while (lst->next)
+	{
+		lst = lst->next;
+		new_list->next = f(lst);
+		new_list = new_list->next;
+	}
+	return (start);
+}
