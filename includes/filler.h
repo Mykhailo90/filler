@@ -17,7 +17,6 @@
 
 typedef struct	s_game
 {
-	int			fd;
 	int			coord_y;
 	int			coord_x;
 	int			field_y;
@@ -49,7 +48,6 @@ void			init_param(t_game *param);
 int				loser_picture(t_game *param);
 int				main(void);
 int				param_validate(t_game *param);
-int				pars_picture(t_game *param);
 int				pars_picture_coords(t_game *param);
 void			processing(t_game *param);
 int				row_parsing(t_game *param);

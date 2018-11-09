@@ -51,19 +51,14 @@ int		field_fix(t_game *param)
 
 int		pars_picture_coords(t_game *param)
 {
+	int iter;
+
 	if (param->line)
 	{
 		param->field_y = ft_atoi(param->line + 6);
 		param->field_x = ft_atoi(param->line + 8);
 		free(param->line);
 	}
-	return (pars_picture(param));
-}
-
-int			pars_picture(t_game *param)
-{
-	int iter;
-
 	if (!(param->picture = (char **)malloc(sizeof(char *) * (param->field_y + 1))))
 		return (0);
 	iter = -1;

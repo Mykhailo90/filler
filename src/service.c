@@ -1,18 +1,22 @@
 
 #include "../includes/filler.h"
 
-void	clearing(t_game *param)
+void		clearing(t_game *param)
 {
-	int h;
+	int 	h;
 
-	h = 0;
-	while (h < param->field_y)
-	{
+	h = -1;
+	while (++h < param->field_y)
 		free(param->picture[h]);
-		h++;
-	}
 	free(param->picture);
-	h = 0;
+	h = -1;
+	while (++h < param->coord_y)
+		free(param->map[h]);
+	free(param->map);
+	h = -1;
+	while (++h < param->coord_y)
+		free(param->jig[h]);
+	free(param->jig);
 }
 
 void	printing(t_game *param)
