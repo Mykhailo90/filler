@@ -1,93 +1,93 @@
 
 #include "../includes/filler.h"
 
-void			zero_out(t_game *inf)
+void			zero_out(t_game *param)
 {
-	inf->map_x = 0;
-	inf->map_y = 0;
-	inf->pic_y = 0;
-	inf->pic_x = 0;
-	inf->mites = 0;
-	inf->end_y = 0;
-	inf->end_x = 0;
+	param->map_x = 0;
+	param->map_y = 0;
+	param->pic_y = 0;
+	param->pic_x = 0;
+	param->mites = 0;
+	param->end_y = 0;
+	param->end_x = 0;
 }
 
-void	pars_line(t_game *inf)
+void	pars_line(t_game *param)
 {
-	//	inf->fd = open("test", O_RDONLY);
-	if (get_next_line(0, &(inf->line)) > 0)
+	//	param->fd = open("test", O_RDONLY);
+	if (get_next_line(0, &(param->line)) > 0)
 	{
-		if (*(inf->line + 10) == '1')
-			inf->my_bot = 'O';
+		if (*(param->line + 10) == '1')
+			param->my_bot = 'O';
 		else
-			inf->my_bot = 'X';
-		if (inf->my_bot == 'O')
-			inf->bot_enemy = 'X';
+			param->my_bot = 'X';
+		if (param->my_bot == 'O')
+			param->bot_enemy = 'X';
 		else
-			inf->bot_enemy = 'O';
+			param->bot_enemy = 'O';
 	}
-	free(inf->line);
-	pars_map_xy(inf);
+	free(param->line);
+	pars_map_xy(param);
 }
 
-int		pars_map_xy(t_game *inf)
+int		pars_map_xy(t_game *param)
 {
-	if (get_next_line(0, &(inf->line)) > 0)
+	if (get_next_line(0, &(param->line)) > 0)
 	{
-		inf->map_y = ft_atoi(inf->line + 8);
-		inf->map_x = ft_atoi(inf->line + 10);
-		free(inf->line);
+		param->map_y = ft_atoi(param->line + 8);
+		param->map_x = ft_atoi(param->line + 10);
+		free(param->line);
 	}
 	else
 		return (0);
-	save_map(inf);
+	save_map(param);
 	return (1);
 }
 
-int		save_map(t_game *inf)
+int		save_map(t_game *param)
 {
 	int		i_map_y;
 
 	i_map_y = 0;
-	get_next_line(0, &inf->line);
-	free(inf->line);
-	if (!(inf->map = (char **)malloc(sizeof(char *) * (inf->map_y + 1))))
+	get_next_line(0, &param->line);
+	free(param->line);
+	if (!(param->map = (char **)malloc(sizeof(char *) * (param->map_y + 1))))
 		return (0);
-	while (get_next_line(0, &(inf->line)) && i_map_y < inf->map_y)
+	while (get_next_line(0, &(param->line)) && i_map_y < param->map_y)
 	{
-		inf->map[i_map_y] = ft_strsub(inf->line, 4, (size_t)inf->map_x);
-		free(inf->line);
+		param->map[i_map_y] = ft_strsub(param->line, 4, (size_t)param->map_x);
+		free(param->line);
 		i_map_y++;
 	}
-	pars_figure_xy(inf);
+	pars_figure_xy(param);
 	return (1);
 }
 //
-int		pars_figure_xy(t_game *inf)
+int		pars_figure_xy(t_game *param)
 {
-	if (inf->line)
+	if (param->line)
 	{
-		inf->pic_y = ft_atoi(inf->line + 6);
-		inf->pic_x = ft_atoi(inf->line + 8);
-		free(inf->line);
+		param->pic_y = ft_atoi(param->line + 6);
+		param->pic_x = ft_atoi(param->line + 8);
+		free(param->line);
 	}
-	pars_figure(inf);
+	pars_figure(param);
 	return (1);
 }
 
 //
 
-int			pars_figure(t_game *inf)
+int			pars_figure(t_game *param)
 {
 	int i_fig_y;
 
-	if (!(inf->figure = (char **)malloc(sizeof(char *) * (inf->pic_y + 1))))
+	if (!(param->figure = (char **)malloc(sizeof(char *) * (param->pic_y + 1))))
 		return (0);
 	i_fig_y = -1;
-	while (++i_fig_y < inf->pic_y && get_next_line(0, &inf->line))
+	while (++i_fig_y < param->pic_y && get_next_line(0, &param->line))
 	{
-		inf->figure[i_fig_y] = ft_strdup(inf->line);
-		free(inf->line);
+		param->figure[i_fig_y] = ft_strdup(param->line);
+		free(param->line);
 	}
 	return (1);
 }

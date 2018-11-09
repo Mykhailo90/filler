@@ -24,7 +24,7 @@ typedef struct				s_gnl_node
 {
 	struct s_gnl_node		*next;
 	int						file_descr;
-	char					*inf;
+	char					*param;
 }							t_gnl_node;
 
 int							get_next_line(const int fd, char **line);

@@ -18,7 +18,7 @@ static	t_gnl_node	*ft_lst_create(int fd)
 
 	file = (t_gnl_node *)malloc((sizeof(t_gnl_node)));
 	file->file_descr = fd;
-	file->inf = NULL;
+	file->param = NULL;
 	file->next = NULL;
 	return (file);
 }
@@ -60,7 +60,7 @@ int					newline_finder(t_gnl_node *pf, char *buff, char **line,
 		*line = ft_strjoin(*line, buff);
 		if (ptr != NULL)
 			free(ptr);
-		pf->inf = ft_strdup(position);
+		pf->param = ft_strdup(position);
 		return (1);
 	}
 	*line = ft_strjoin(*line, buff);
@@ -76,10 +76,10 @@ int					main_sequence(t_gnl_node *pf, char **line, int fd,
 	int number;
 
 	*line = ft_strnew(1);
-	if (pf->inf != NULL)
+	if (pf->param != NULL)
 	{
-		number = ft_strlen(pf->inf);
-		if (newline_finder(pf, pf->inf, line, number))
+		number = ft_strlen(pf->param);
+		if (newline_finder(pf, pf->param, line, number))
 			return (1);
 	}
 	while ((number = read(fd, buff, BUFF_SIZE)) > 0)

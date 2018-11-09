@@ -15,14 +15,14 @@
 
 t_list	*ft_newlink(t_list *list, void *content)
 {
-	t_list	*linkinf;
+	t_list	*linkparam;
 
-	if (!(linkinf = malloc(sizeof(t_list))))
+	if (!(linkparam = malloc(sizeof(t_list))))
 		return (NULL);
-	if (linkinf)
+	if (linkparam)
 	{
-		linkinf->content = content;
-		linkinf->next = list;
+		linkparam->content = content;
+		linkparam->next = list;
 	}
-	return (linkinf);
+	return (linkparam);
 }
