@@ -18,46 +18,41 @@
 typedef struct	s_game
 {
 	int			fd;
-	int			map_y;
-	int			map_x;
-	int			pic_y;
-	int			pic_x;
-	int			mites;
-	int			end_y;
-	int			end_x;
-	char		my_bot;
-	char		bot_enemy;
+	int			coord_y;
+	int			coord_x;
+	int			field_y;
+	int			field_x;
+	int			flea;
+	int			finish_Y;
+	int			finish_X;
+	char		champ;
+	char		loser;
 	char		*line;
-	int			**matrix;
-	char		**figure;
+	int			**jig;
+	char		**picture;
 	char		**map;
-/*
-** --------------------------iterator in enemy_figure--------------------
-*/
-	int			en_f_y;
-	int			en_f_x;
-/*
-** --------------------------iterator in distance --------------------
-*/
-	int			dis_y;
-	int			dis_x;
+	int			loser_coord_Y;
+	int			loser_coord_X;
+	int			space_Y;
+	int			space_X;
 }				t_game;
 
-int				main(void);
-void			pars_line(t_game *param);
-int				pars_map_xy(t_game *param);
-int				save_map(t_game *param);
-int				pars_figure_xy(t_game *param);
-int				pars_figure(t_game *param);
-int				matrix(t_game *param);
-int				enemy_figure(t_game *param);
+int				coords_parsing(t_game *param);
+void			clearing(t_game *param);
 int				distance(t_game *param);
-int				dist_forml(t_game *param);
-int				territory(t_game *param);
-int				valid_check(t_game *param, int w_m, int h_m);
-void			determ_course(t_game *param, int h, int w);
-int				ft_final_decision(t_game *param, int optimal, int h, int w);
-void			ft_output(t_game *param);
-void			ft_refreshers(t_game *param);
-void			zero_out(t_game *param);
+void			field_fix(t_game *param);
+void			final_solution(t_game *param, int optimal, int height, int width);
+int				jig(t_game *param);
+void			init_param(t_game *param);
+int				loser_picture(t_game *param);
+int				main(void);
+int				param_validate(t_game *param, int min_width, int min_height);
+void			pars_picture(t_game *param);
+void			pars_picture_coords(t_game *param);
+void			processing(t_game *param);
+void			row_parsing(t_game *param);
+void			printing(t_game *param);
+void			set_route(t_game *param, int height, int width);
+int				soil(t_game *param);
+int				space_form(t_game *param);
 #endif

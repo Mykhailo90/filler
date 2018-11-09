@@ -1,29 +1,28 @@
 
 #include "../includes/filler.h"
 
+void	processing(t_game *param)
+{
+	jig(param);
+	soil(param);
+	printing(param);
+	clearing(param);
+}
+
 int		main(void)
 {
 	t_game *param;
 
 	param = (t_game *)ft_memalloc(sizeof(t_game));
-	zero_out(param);
-	pars_line(param);
-	matrix(param);
-	territory(param);
-	ft_output(param);
-	ft_refreshers(param);
+	init_param(param);
+	row_parsing(param);
+	processing(param);
 	while (param)
 	{
-		if (pars_map_xy(param))
-		{
-			matrix(param);
-			territory(param);
-			ft_output(param);
-			ft_refreshers(param);
-		}
+		if (coords_parsing(param))
+			processing(param);
 		else
 			return (0);
 	}
-	//	free(param.len);
 	return (0);
 }

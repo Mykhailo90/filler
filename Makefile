@@ -22,10 +22,10 @@ SRC_DIR 	= ./src
 INCL_DIR 	= ./includes
 SRC_NAME	= \
 				main.c\
-	  			ft_parsing.c\
-	  			outline.c\
-	  			outline_and_stroke.c\
-	  			ft_supportive.c #
+	  			parsing.c\
+				validate.c\
+				service.c\
+	  			print.c
 
 OBJ_NAME	= $(SRC_NAME:.c=.o)
 OBJ 		= $(addprefix $(OBJ_DIR)/, $(OBJ_NAME))
