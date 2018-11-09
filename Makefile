@@ -25,7 +25,7 @@ SRC_NAME	= \
 	  			ft_parsing.c\
 	  			outline.c\
 	  			outline_and_stroke.c\
-	  			ft_supportive.c
+	  			ft_supportive.c #
 
 OBJ_NAME	= $(SRC_NAME:.c=.o)
 OBJ 		= $(addprefix $(OBJ_DIR)/, $(OBJ_NAME))

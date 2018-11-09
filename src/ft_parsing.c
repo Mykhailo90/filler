@@ -1,7 +1,7 @@
 
 #include "../includes/filler.h"
 
-void			zero_out(t_fl *inf)
+void			zero_out(t_game *inf)
 {
 	inf->map_x = 0;
 	inf->map_y = 0;
@@ -12,7 +12,7 @@ void			zero_out(t_fl *inf)
 	inf->end_x = 0;
 }
 
-void	pars_line(t_fl*inf)
+void	pars_line(t_game *inf)
 {
 	//	inf->fd = open("test", O_RDONLY);
 	if (get_next_line(0, &(inf->line)) > 0)
@@ -30,7 +30,7 @@ void	pars_line(t_fl*inf)
 	pars_map_xy(inf);
 }
 
-int		pars_map_xy(t_fl *inf)
+int		pars_map_xy(t_game *inf)
 {
 	if (get_next_line(0, &(inf->line)) > 0)
 	{
@@ -44,7 +44,7 @@ int		pars_map_xy(t_fl *inf)
 	return (1);
 }
 
-int		save_map(t_fl *inf)
+int		save_map(t_game *inf)
 {
 	int		i_map_y;
 
@@ -63,7 +63,7 @@ int		save_map(t_fl *inf)
 	return (1);
 }
 //
-int		pars_figure_xy(t_fl *inf)
+int		pars_figure_xy(t_game *inf)
 {
 	if (inf->line)
 	{
@@ -77,7 +77,7 @@ int		pars_figure_xy(t_fl *inf)
 
 //
 
-int			pars_figure(t_fl *inf)
+int			pars_figure(t_game *inf)
 {
 	int i_fig_y;
 

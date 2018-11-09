@@ -3,9 +3,9 @@
 
 int		main(void)
 {
-	t_fl *inf;
+	t_game *inf;
 
-	inf = (t_fl *)ft_memalloc(sizeof(t_fl));
+	inf = (t_game *)ft_memalloc(sizeof(t_game));
 	zero_out(inf);
 	pars_line(inf);
 	matrix(inf);

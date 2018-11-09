@@ -1,7 +1,7 @@
 
 #include "../includes/filler.h"
 
-void	ft_refreshers(t_fl *inf)
+void	ft_refreshers(t_game *inf)
 {
 	int h;
 
