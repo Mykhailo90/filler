@@ -35,24 +35,26 @@ typedef struct	s_game
 	int			loser_coord_X;
 	int			space_Y;
 	int			space_X;
+	int 		time_x;
+	int  		time_y;
 }				t_game;
 
 int				coords_parsing(t_game *param);
 void			clearing(t_game *param);
 int				distance(t_game *param);
-void			field_fix(t_game *param);
-void			final_solution(t_game *param, int optimal, int height, int width);
+int				field_fix(t_game *param);
+void			final_solution(t_game *param, int optimal);
 int				jig(t_game *param);
 void			init_param(t_game *param);
 int				loser_picture(t_game *param);
 int				main(void);
-int				param_validate(t_game *param, int min_width, int min_height);
-void			pars_picture(t_game *param);
-void			pars_picture_coords(t_game *param);
+int				param_validate(t_game *param);
+int				pars_picture(t_game *param);
+int				pars_picture_coords(t_game *param);
 void			processing(t_game *param);
-void			row_parsing(t_game *param);
+int				row_parsing(t_game *param);
 void			printing(t_game *param);
-void			set_route(t_game *param, int height, int width);
+void			set_route(t_game *param);
 int				soil(t_game *param);
 int				space_form(t_game *param);
 #endif

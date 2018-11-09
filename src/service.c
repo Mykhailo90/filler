@@ -34,12 +34,12 @@ void			init_param(t_game *param)
 	param->finish_X = 0;
 }
 
-void		final_solution(t_game *param, int optimal, int height, int width)
+void		final_solution(t_game *param, int optimal)
 {
 	if (param->flea > optimal)
 	{
-		param->finish_Y = height;
-		param->finish_X = width;
+		param->finish_Y = param->time_y;
+		param->finish_X = param->time_x;
 		param->flea = optimal;
 	}
 }

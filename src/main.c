@@ -11,16 +11,15 @@ void	processing(t_game *param)
 
 int		main(void)
 {
-	t_game *param;
+	t_game param;
 
-	param = (t_game *)ft_memalloc(sizeof(t_game));
-	init_param(param);
-	row_parsing(param);
-	processing(param);
-	while (param)
+	init_param(&param);
+	row_parsing(&param);
+	processing(&param);
+	while (1)
 	{
-		if (coords_parsing(param))
-			processing(param);
+		if (coords_parsing(&param))
+			processing(&param);
 		else
 			return (0);
 	}

@@ -3,31 +3,30 @@
 
 int		jig(t_game *param)
 {
-	int heig;
-	int wid;
+	int heigt;
+	int width;
 
-	if (!(param->jig = (int **)malloc(sizeof(int *) * (param->coord_y + 1))))
-		return (0);
-	param->jig[param->coord_y + 1] = NULL;
 	param->finish_Y = -1;
 	param->finish_X = -1;
 	param->flea = 9999;
-	heig = 0;
-	while (param->coord_y > heig)
+	if (!(param->jig = (int **)malloc(sizeof(int *) * (param->coord_y + 1))))
+		return (0);
+	param->jig[param->coord_y + 1] = NULL;
+	heigt = 0;
+	while (param->coord_y > heigt)
 	{
-		wid = 0;
-		if (!(param->jig[heig] = (int *)malloc(sizeof(int) * (param->coord_x + 1))))
+		width = 0;
+		if (!(param->jig[heigt] = (int *)malloc(sizeof(int) * (param->coord_x + 1))))
 			return (0);
-		param->jig[heig][param->coord_x + 1] = '\0';
-		while (param->coord_x > wid)
+		param->jig[heigt][param->coord_x + 1] = '\0';
+		while (param->coord_x > width)
 		{
-			param->jig[heig][wid] = 9999;
-			wid++;
+			param->jig[heigt][width] = 9999;
+			width++;
 		}
-		heig++;
+		heigt++;
 	}
-	loser_picture(param);
-	return (1);
+	return (loser_picture(param));
 }
 
 int		loser_picture(t_game *param)
