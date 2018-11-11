@@ -40,7 +40,6 @@ static	int		ft_flag(int n)
 char			*ft_itoa(int n)
 {
 	char	*str;
-
 	int		stop;
 	int		size;
 

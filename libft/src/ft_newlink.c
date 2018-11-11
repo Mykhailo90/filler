@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../includes/libft.h"
 
 t_list	*ft_newlink(t_list *list, void *content)

@@ -31,7 +31,7 @@ OBJ_NAME	= $(SRC_NAME:.c=.o)
 OBJ 		= $(addprefix $(OBJ_DIR)/, $(OBJ_NAME))
 SRC 		= $(addprefix $(SRC_DIR)/, $(SRC_NAME))
 
-all: $(NAME)
+all: $(NAME) bonus
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo "Compilling:$<"
@@ -58,5 +58,9 @@ fclean: clean
 	@echo "Cleaning exe"
 	@/bin/rm -f $(NAME)
 	@/bin/rm -f players/$(NAME)
+	@/bin/rm -f ./visualisation
 
 re: fclean all
+
+bonus:
+	$(CC) $(FLAGS) ./src/bonus.c $(LIB_DIR)/libft.a -o visualisation

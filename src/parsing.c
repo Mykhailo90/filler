@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msarapii <msarapii@student.unit.ua>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/11/11 15:21:52 by msarapii          #+#    #+#             */
+/*   Updated: 2018/11/11 15:21:54 by msarapii         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/filler.h"
 
-int	row_parsing(t_game *param)
+int			row_parsing(t_game *param)
 {
 	if (get_next_line(0, &(param->line)) > 0)
 	{
@@ -18,7 +29,7 @@ int	row_parsing(t_game *param)
 	return (coords_parsing(param));
 }
 
-int		coords_parsing(t_game *param)
+int			coords_parsing(t_game *param)
 {
 	if (get_next_line(0, &(param->line)) > 0)
 	{
@@ -31,7 +42,7 @@ int		coords_parsing(t_game *param)
 	return (field_fix(param));
 }
 
-int		field_fix(t_game *param)
+int			field_fix(t_game *param)
 {
 	int		iter;
 
@@ -49,9 +60,9 @@ int		field_fix(t_game *param)
 	return (pars_picture_coords(param));
 }
 
-int		pars_picture_coords(t_game *param)
+int			pars_picture_coords(t_game *param)
 {
-	int iter;
+	int		iter;
 
 	if (param->line)
 	{
@@ -59,7 +70,8 @@ int		pars_picture_coords(t_game *param)
 		param->field_x = ft_atoi(param->line + 8);
 		free(param->line);
 	}
-	if (!(param->picture = (char **)malloc(sizeof(char *) * (param->field_y + 1))))
+	if (!(param->picture = (char **)malloc(sizeof(char *)
+		* (param->field_y + 1))))
 		return (0);
 	iter = -1;
 	while (++iter < param->field_y && get_next_line(0, &param->line))

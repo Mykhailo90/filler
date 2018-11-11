@@ -13,7 +13,7 @@
 #ifndef FILLER_H
 # define FILLER_H
 # include "../libft/includes/libft.h"
-#include <stdio.h>
+# include <stdio.h>
 
 typedef struct	s_game
 {
@@ -22,20 +22,20 @@ typedef struct	s_game
 	int			field_y;
 	int			field_x;
 	int			flea;
-	int			finish_Y;
-	int			finish_X;
+	int			finish_y;
+	int			finish_x;
 	char		champ;
 	char		loser;
 	char		*line;
 	int			**jig;
 	char		**picture;
 	char		**map;
-	int			loser_coord_Y;
-	int			loser_coord_X;
-	int			space_Y;
-	int			space_X;
-	int 		time_x;
-	int  		time_y;
+	int			loser_coord_y;
+	int			loser_coord_x;
+	int			space_y;
+	int			space_x;
+	int			time_x;
+	int			time_y;
 }				t_game;
 
 int				coords_parsing(t_game *param);

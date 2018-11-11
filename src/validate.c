@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msarapii <msarapii@student.unit.ua>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/11/11 15:21:13 by msarapii          #+#    #+#             */
+/*   Updated: 2018/11/11 15:21:17 by msarapii         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/filler.h"
 
@@ -22,10 +33,10 @@ int		param_validate(t_game *param)
 {
 	int y;
 	int x;
-	int flag;
+	int f;
 
 	x = 0;
-	flag = 0;
+	f = 0;
 	while (x < param->field_x)
 	{
 		y = 0;
@@ -33,17 +44,18 @@ int		param_validate(t_game *param)
 		{
 			if (param->picture[y][x] == '*')
 			{
-				if (!(flag) && (param->map[y + param->time_y][x + param->time_x]
-				 == param->champ))
-					flag = 1;
-				else if (param->map[param->time_y + y][param->time_x + x] != '.')
+				if (!(f) && (param->map[y + param->time_y][x + param->time_x]
+				== param->champ))
+					f = 1;
+				else if (param->map[param->time_y + y][param->time_x + x]
+				!= '.')
 					return (0);
 			}
 			y++;
 		}
 		x++;
 	}
-	return ((flag) ? 1 : 0);
+	return ((f) ? 1 : 0);
 }
 
 void	set_route(t_game *param)

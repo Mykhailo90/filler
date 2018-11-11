@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   service.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msarapii <msarapii@student.unit.ua>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/11/11 15:21:27 by msarapii          #+#    #+#             */
+/*   Updated: 2018/11/11 15:21:28 by msarapii         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/filler.h"
 
-void		clearing(t_game *param)
+void			clearing(t_game *param)
 {
-	int 	h;
+	int			h;
 
 	h = -1;
 	while (++h < param->field_y)
@@ -19,11 +30,11 @@ void		clearing(t_game *param)
 	free(param->jig);
 }
 
-void	printing(t_game *param)
+void			printing(t_game *param)
 {
-	ft_putnbr(param->finish_Y);
+	ft_putnbr(param->finish_y);
 	write(1, " ", 1);
-	ft_putnbr(param->finish_X);
+	ft_putnbr(param->finish_x);
 	write(1, "\n", 1);
 }
 
@@ -34,16 +45,16 @@ void			init_param(t_game *param)
 	param->field_y = 0;
 	param->field_x = 0;
 	param->flea = 0;
-	param->finish_Y = 0;
-	param->finish_X = 0;
+	param->finish_y = 0;
+	param->finish_x = 0;
 }
 
-void		final_solution(t_game *param, int optimal)
+void			final_solution(t_game *param, int optimal)
 {
 	if (param->flea > optimal)
 	{
-		param->finish_Y = param->time_y;
-		param->finish_X = param->time_x;
+		param->finish_y = param->time_y;
+		param->finish_x = param->time_x;
 		param->flea = optimal;
 	}
 }
